@@ -71,4 +71,20 @@ public class Server extends JFrame{
 		showMessage("\n Streams are now setup! \n");
 	}
 	
+	// during the chat conversation
+	private void whileChatting() throws IOException {
+		String message = " You are now connected!";
+		sendMessage(message);
+		ableToType(true); //We set the intial setEditable to false in our default constructor. Now since we are connected we need to change it back to true. TODO: implement ableToType()
+		do {
+						// have conversation
+			try {
+				message = (String) input.readObject(); //we are reading the input from their stream socket and saving it as message. 
+				showMessage("\n" + message);
+			}catch(ClassNotFoundException classNotFoundException) {
+				showMessage("\n Message not readable");
+			}
+		}while(!message.equals("CLIENT - END"));
+	}
+	
 }
