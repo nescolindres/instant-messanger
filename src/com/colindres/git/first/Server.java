@@ -55,12 +55,20 @@ public class Server extends JFrame{
 		}
 	}
 	
-	//waiting for connection, the n display connecion information
+	//waiting for connection, the n display connection information
 	private void waitForConnection() throws IOException{
 		showMessage("Waiting for someone to connect.... \n");
 		connection = server.accept(); //listens for a connection and accepts it once a request has been made.
 		showMessage("Now connected to " + connection.getInetAddress().getHostName()); //Shows who you are connected to with IP address and Host Name
 
+	}
+	
+	//get stream to send and recieve data
+	private void setupStreams() throws IOException {
+		output = new ObjectOutputStream(connection.getOutputStream()); // creating the pathway that allows us to connect to another computer. We are connecting to whatever Socket the connection var created.
+		output.flush(); //flushes the stream. In case there is any data that is left over in the stream we flush it out to avoid any potential errors and data leaks. 
+		input = new ObjectInputStream(connection.getInputStream()); // creating pathway to retrieve information from another computer.
+		showMessage("\n Streams are now setup! \n");
 	}
 	
 }
