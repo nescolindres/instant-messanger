@@ -122,5 +122,15 @@ public class Server extends JFrame{
 			);
 	}
 	
+	//let the user type stuff into their box
+	private void ableToType(final boolean tof) {
+		SwingUtilities.invokeLater(		
+				new Runnable() {
+					public void run() {
+						userText.setEditable(tof); //set the text box to true which allows user to type
+					}
+				}
+			);
+	}
 	
 }
