@@ -28,7 +28,7 @@ public class Server extends JFrame{
 					}
 				}
 		);
-		add(userText, BorderLayout.NORTH); 	//adding the userText to the chat window, and its location is north (might switch to south)
+		add(userText, BorderLayout.SOUTH); 	//adding the userText to the chat window, and its location is north (might switch to south)
 		chatWindow = new JTextArea();	//simply creating a new chat object
 		add(new JScrollPane(chatWindow));
 		setSize(300,150);		//adds the dimensions of the chat window
