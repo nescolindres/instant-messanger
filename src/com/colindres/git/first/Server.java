@@ -47,7 +47,7 @@ public class Server extends JFrame{
 				}catch(EOFException eofException) { //EOFExeption signals end of stream. When the user disconnects. It will catch this exception when we end conversation
 					showMessage("\n Server ended the conncetion!");  //TODO: implement showMessage()
 				}finally {
-					closeAll(); //TODO: Implement closeAll();
+					closeAll(); 
 				}
 			}
 		}catch(IOException ioException) {
