@@ -35,4 +35,25 @@ public class Server extends JFrame{
 		setVisible(true);		// setting the visibility to true
 	}
 	
+	// set up and run the server
+	public void startRunning() {
+		try {
+			server = new ServerSocket(6789, 100);  //ServerSocket takes in two parameters. the first is the port number(dummy port used in place) and the second is the backlog.
+			while(true) {
+				try {		//this is where we connect and have a conversation TODO: implement waitForConnection(), setupStreams(), whileChatting().
+					waitForConnection(); //When we start the server, it is going to wait for someone to connect with.
+					setupStreams();		//Once a user connects, its going to setup the input and output streams from the server to the user
+					whileChatting();	//Once the streams are connected, this method will append the conversations to the chatbox and update the chatwindow without creating a new GUI everytime
+				}catch(EOFException eofException) { //EOFExeption signals end of stream. When the user disconnects. It will catch this exception when we end conversation
+					showMessage("\n Server ended the conncetion!");  //TODO: implement showMessage()
+				}finally {
+					closeAll(); //TODO: Implement closeAll();
+				}
+			}
+		}catch(IOException ioException) {
+			ioException.printStackTrace();
+		}
+	}
+	
+	
 }
