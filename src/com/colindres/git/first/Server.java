@@ -100,5 +100,14 @@ public class Server extends JFrame{
 		}
 	}
 	
-	
+	//send a message to client 
+	private void sendMessage(String message) {
+		try {
+			output.writeObject("SERVER - " + message); //this creates an object and sends the message from the server
+			output.flush();
+			showMessage("\nSERVER -" + message);
+		}catch(IOException ioException) {
+			chatWindow.append("\n Cant send message");
+		}
+	}
 }
