@@ -110,4 +110,17 @@ public class Server extends JFrame{
 			chatWindow.append("\n Cant send message");
 		}
 	}
+	
+	//updates chatWindow
+	private void showMessage(final String text) {
+		SwingUtilities.invokeLater(		//allows you to create a thread without making a new GUI every time. updates the text inside chat window
+				new Runnable() {
+					public void run() {
+						chatWindow.append(text); //appending text at the end of the chat window
+					}
+				}
+			);
+	}
+	
+	
 }
