@@ -91,5 +91,15 @@ public class Client extends JFrame {
 		}
 	}
 	
+	//send messages to server
+	private void sendMessage(String message) {
+		try {
+			output.writeObject("CLIENT -" + message);
+			output.flush();
+			showMessage("\nClient - " + message);
+		}catch(IOException ioException) {
+			chatWindow.append("\n Something messed up sending message");
+		}
+	}
 	
 }
