@@ -64,5 +64,32 @@ public class Client extends JFrame {
 		input = new ObjectInputStream(connection.getInputStream());
 		showMessage("\nStreams are connected!");
 	}
+	//while chatting with server
+	private void whileChatting() throws IOException {
+		ableToType(true);
+		do {
+			try {
+				message = (String) input.readObject();
+				showMessage("\n" + message);
+			}catch (ClassNotFoundException classNotFoundException) {
+				showMessage("\n undefined object type");
+			}
+			
+		}while(!message.equals("SERVER - END"));
+	}
+	
+	//close the streams and sockets
+	private void closeAll() {
+		showMessage("\n closing everything...");
+		ableToType(false);
+		try {
+			output.close();
+			input.close();
+			connection.close();
+		}catch(IOException ioException) {
+		ioException.printStackTrace();
+		}
+	}
+	
 	
 }
