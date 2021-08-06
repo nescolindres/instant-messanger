@@ -1,4 +1,4 @@
-package com.colindres.git.first;
+package serverprogram;
 import java.io.*;
 import java.net.*;
 import java.awt.*;
