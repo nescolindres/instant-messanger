@@ -30,6 +30,7 @@ public class Server extends JFrame{
 		);
 		add(userText, BorderLayout.SOUTH); 	//adding the userText to the chat window, and its location is north (might switch to south)
 		chatWindow = new JTextArea();	//simply creating a new chat object
+		chatWindow.setEditable(false); //disables typing in the main chat window
 		add(new JScrollPane(chatWindow));
 		setSize(300,150);		//adds the dimensions of the chat window
 		setVisible(true);		// setting the visibility to true
